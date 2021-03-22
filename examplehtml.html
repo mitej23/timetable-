@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bind.h test</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- // -->
+  </head>
+  <body>
+    <div id="overlay"></div>
+    <h2>Time Table for FY BSc IT Sem II</h2>
+    <br />
+
+    <div id="main">
+      <article>
+        <!-- / College Timetable -->
+        <!-- Algorithm to get id from day and timming -->
+        <!-- Monday == 1  ------- Add 6 multiples to get next timming  
+                 Tuesday == 2
+                 Wednesday == 3
+                 Thursday == 4
+                 Friday == 5
+                 Saturday == 6  -->
+        <!-- Example to get timming 9:55 - 10:55 in wed  (3 + 6*(4 - 1) == 27) -->
+        <!-- fORMULA = day + 6 * (timming - 1) -->
+        <div class="tab">
+          <table border="0" cellpadding="0" cellspacing="0">
+            <tr class="days">
+              <th></th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+            </tr>
+            <tr>
+              <td class="time">6:45-7:45</td>
+              <td id="c1"></td>
+              <td id="c2"></td>
+              <td id="c3"></td>
+              <td id="c4"></td>
+              <td id="c5"></td>
+              <td id="c6"></td>
+            </tr>
+            <tr>
+              <td class="time">7:45-8:45</td>
+              <td id="c7"></td>
+              <td id="c8"></td>
+              <td id="c9"></td>
+              <td id="c10"></td>
+              <td id="c11"></td>
+              <td id="c12"></td>
+            </tr>
+            <tr>
+              <td class="time">8:55-9:55</td>
+              <td id="c13"></td>
+              <td id="c14"></td>
+              <td id="c15"></td>
+              <td id="c16"></td>
+              <td id="c17"></td>
+              <td id="c18"></td>
+            </tr>
+            <tr>
+              <td class="time">9:55-10:55</td>
+              <td id="c19"></td>
+              <td id="c20"></td>
+              <td id="c21"></td>
+              <td id="c22"></td>
+              <td id="c23"></td>
+              <td id="c24"></td>
+            </tr>
+            <tr>
+              <td class="time">11:05-12:05</td>
+              <td id="c25"></td>
+              <td id="c26"></td>
+              <td id="c27"></td>
+              <td id="c28"></td>
+              <td id="c29"></td>
+            </tr>
+            <tr>
+              <td class="time">12:05-01:05</td>
+              <td id="c31"></td>
+              <td id="c32"></td>
+              <td id="c33"></td>
+              <td id="c34"></td>
+              <td id="c35"></td>
+              <td id="c36"></td>
+            </tr>
+          </table>
+        </div>
+      </article>
+      <div class="change">
+        <h1>Add</h1>
+        <label for="timming">Timmimg:</label>
+        <select id="timmings" name="time">
+          <option value="-1">Choose option..</option>
+          <option value="1">6:45-7:45</option>
+          <option value="2">7:45-8:45</option>
+          <option value="3">8:55-9:55</option>
+          <option value="4">9:55-10:55</option>
+          <option value="5">11:05-12:05</option>
+          <option value="6">12:05-1:05</option>
+        </select>
+        <br />
+        <label for="days">Day:</label>
+        <select id="days" name="day">
+          <option value="-1">Choose option..</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+        <br />
+        <label for="lecture">Lecture:</label>
+        <select id="lectures" name="lecture">
+          <option value="-1">Choose option..</option>
+          <option value="1">OS</option>
+          <option value="2">SMDS</option>
+          <option value="3">DM</option>
+          <option value="4">OOP</option>
+          <option value="5">MPD</option>
+        </select>
+        <br />
+        <input type="submit" value="Add" onclick="add()" />
+        <br /><br />
+        <h1>Remove</h1>
+        <label for="timming">Timmimg:</label>
+        <select id="remove-timmings" name="r-time">
+          <option value="-1">Choose option..</option>
+          <option value="1">6:45-7:45</option>
+          <option value="2">7:45-8:45</option>
+          <option value="3">8:55-9:55</option>
+          <option value="4">9:55-10:55</option>
+          <option value="5">11:05-12:05</option>
+          <option value="6">12:05-1:05</option>
+        </select>
+        <br />
+        <label for="days">Day:</label>
+        <select id="remove-days" name="r-day">
+          <option value="-1">Choose option..</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+        <br />
+        <input type="submit" value="Remove" onclick="remove()" />
+        <br /><br />
+        <h1>Replace</h1>
+        <label for="timming">Timmimg:</label>
+        <select id="repl-timmings" name="time">
+          <option value="-1">Choose option..</option>
+          <option value="1">6:45-7:45</option>
+          <option value="2">7:45-8:45</option>
+          <option value="3">8:55-9:55</option>
+          <option value="4">9:55-10:55</option>
+          <option value="5">11:05-12:05</option>
+          <option value="6">12:05-1:05</option>
+        </select>
+        <br />
+        <label for="days">Day:</label>
+        <select id="repl-days" name="day">
+          <option value="-1">Choose option..</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+        <br />
+        <label for="lecture">Lecture:</label>
+        <select id="repl-lectures" name="lecture">
+          <option value="-1">Choose option..</option>
+          <option value="1">OS</option>
+          <option value="2">SMDS</option>
+          <option value="3">DM</option>
+          <option value="4">OOP</option>
+          <option value="5">MPD</option>
+        </select>
+        <br />
+        <input type="submit" value="Replace" onclick="replace()" />
+      </div>
+    </div>
+  </body>
+
+  <script>
+    //---------------------------------Main----------------------------------------
+    var form = document.getElementById("add");
+    var lectures = ["os", "smds", "dm", "oop", "mpd"];
+
+    const add = () => {
+      let timming = parseInt(document.getElementById("timmings").value);
+      let day = parseInt(document.getElementById("days").value);
+      let lecture = document.getElementById("lectures").value;
+      if (timming == -1 || day == -1 || lecture == -1) {
+        alert("Fill the form correctly");
+      } else {
+        var lec = new Module.MyClass(timming, lectures[lecture - 1], day);
+        allLectures.push(lec);
+        console.log(allLectures);
+        addToTable();
+      }
+    };
+    // -------------------------------------------------------------------------------
+    var allLectures = [];
+    const addToTable = () => {
+      console.log(allLectures);
+      for (let i = 0; i < allLectures.length; i++) {
+        //variables
+        let tim = allLectures[i].start;
+        let da = allLectures[i].end;
+        let lec = allLectures[i].y;
+        //formula
+        formula = da + 6 * (tim - 1);
+        var a = document.getElementById(`c${formula}`);
+        a.innerHTML = `${lec.toUpperCase()}`;
+        a.classList.add(`${lec}`);
+      }
+    };
+    //---------------------------Remove-------------------------------
+    const remove = () => {
+      let timming = parseInt(document.getElementById("remove-timmings").value);
+      let day = parseInt(document.getElementById("remove-days").value);
+      console.log(timming, day);
+      if (timming == -1 || day == -1) {
+        alert("Fill the remove paramters correctly");
+      } else {
+        let count = false;
+        for (let i = 0; i < allLectures.length; i++) {
+          if (allLectures[i].start == timming && allLectures[i].end == day) {
+            console.log(allLectures[i]);
+
+            //Removing lecture from html
+            let tim = allLectures[i].start;
+            let da = allLectures[i].end;
+            formula = da + 6 * (tim - 1);
+            var a = document.getElementById(`c${formula}`);
+            a.innerHTML = "";
+            a.className = "";
+            count = true;
+            allLectures.pop(allLectures[i]);
+          }
+        }
+        if (count == false) {
+          alert("There is no lecture at that position");
+        } else {
+          count = false;
+        }
+      }
+    };
+    //-----------------------------Replace---------------------------------------
+    const replace = () => {
+      let timming = parseInt(document.getElementById("repl-timmings").value);
+      let day = parseInt(document.getElementById("repl-days").value);
+      let lecture = document.getElementById("repl-lectures").value;
+      console.log(timming, day, lecture);
+      if (timming == -1 || day == -1 || lecture == -1) {
+        alert("Fill replace parameters correctly");
+      } else {
+        for (let i = 0; i < allLectures.length; i++) {
+          if (allLectures[i].start == timming && allLectures[i].end == day) {
+            console.log(allLectures[i]);
+            allLectures[i].y = lectures[lecture - 1];
+            addToTable();
+          }
+        }
+      }
+    };
+    //---------------------------------------------------------------------------
+    var Module = {
+      onRuntimeInitialized: function () {
+        addToTable();
+
+        // console.log(arr);
+
+        //instance.delete();
+      },
+    };
+  </script>
+  <script src="example.js"></script>
+</html>
